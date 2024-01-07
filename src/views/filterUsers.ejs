@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <title>Search Users</title>
+  </head>
+  <body>
+
+    <nav class="navbar bg-primary" data-bs-theme="dark">
+      <div class="container">
+        <span class="navbar-brand mb-0 h1">Search Users</span>
+      </div>
+    </nav>
+
+    <div class="container text-center">
+      <h1 class="m-3">Search Users</h1>
+      <div class="border border-2 p-3 m-3 d-inline-block">
+        <form class="m-4">
+          <div class="row m-3">
+            <label class="col" for="firstName">First Name:</label>
+            <input class="col" type="text" id="firstName" name="first_name" value="<%= qs.first_name %>" />
+          </div>
+          <div class="row m-3">
+            <label class="col" for="lastName">Last Name:</label>
+            <input class="col" type="text" id="lastName" name="last_name" value="<%= qs.last_name %>" />
+          </div>
+          <div class="row m-3">
+            <label class="col" for="email">Email id:</label>
+            <input class="col" type="text" id="email" name="email" value="<%= qs.email %>" />
+          </div>
+          <div class="row m-3">
+            <label class="col" for="age">Age >=:</label>
+            <input class="col" type="text" id="age" name="age" value="<%= qs.age %>"/>
+          </div>
+          <div class="row m-3">
+            <button class="btn btn-primary">Search</button>
+          </div>
+        </form>
+      </div>
+
+      <% if (isSearchResult) { %>
+      <div>
+        <h3 class="m-3">Search Result</h3>
+        <table class="table table-striped table-hover table-bordered mt-4">
+          <thead>
+            <tr>
+              <th>S No.</th>
+              <th>User Id</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email Id</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach((user, index)=>{ %>
+            <tr>
+              <td><%= index+1 %></td>
+              <td><%= user._id %></td>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.age %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <% } %>
+
+      <% if (isError) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>404</strong> Not Found
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <% } %>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

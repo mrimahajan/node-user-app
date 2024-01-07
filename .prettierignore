@@ -1,0 +1,14 @@
+# Ignore node_modules directory
+node_modules
+
+# Ignore build or output directories
+build
+dist
+
+# Ignore coverage reports
+coverage
+
+# Ignore log files
+*.log
+
+# Ignore compiled JavaScript files
